@@ -19,6 +19,7 @@ function setupStaticFileServing(app: express.Application, env: string) {
   if (env === 'production' || env === 'staging' || env === 'development') {
     // Serve any static files
     const dirname = path.resolve(__dirname, "../client/dist/angular-boilerplate/browser");
+    console.log(`Serving static files from: ${dirname}`); // Add this line for debugging
     app.use(express.static(dirname, { maxAge: 3600000 }));
 
     // Handle app routing, return all requests to ngx app
