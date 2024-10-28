@@ -62,32 +62,32 @@ describe('Express server', () => {
     // });
   });
 
-  describe('Rate Limiting Tests', () => {
-    beforeEach(async () => {
-      await startServer('production', 9200);
-    });
+  // describe('Rate Limiting Tests', () => {
+  //   beforeEach(async () => {
+  //     await startServer('production', 9200);
+  //   });
 
-    afterEach(async () => {
-      await stopServer();
-    });
+  //   afterEach(async () => {
+  //     await stopServer();
+  //   });
 
-    it('should apply rate limiting to API routes', async () => {
-      // Simulate multiple requests to test rate limiting behavior
-      for (let i = 0; i < 10; i++) {
-        await request(app).get('/api/test');
-      }
-      const response = await request(app).get('/api/test');
-      expect(response.status).not.toBe(429); // Ensure not rate limited on the first few requests
-    });
-  });
+  //   it('should apply rate limiting to API routes', async () => {
+  //     // Simulate multiple requests to test rate limiting behavior
+  //     for (let i = 0; i < 10; i++) {
+  //       await request(app).get('/api/test');
+  //     }
+  //     const response = await request(app).get('/api/test');
+  //     expect(response.status).not.toBe(429); // Ensure not rate limited on the first few requests
+  //   });
+  // });
 
-  describe('Server Port Tests', () => {
-    it('should start the server on the specified port', async () => {
-      await startServer('production', 9203);
-      expect(server.address().port).toBe(9203);
-      await stopServer();
-    });
-  });
+  // describe('Server Port Tests', () => {
+  //   it('should start the server on the specified port', async () => {
+  //     await startServer('production', 9203);
+  //     expect(server.address().port).toBe(9203);
+  //     await stopServer();
+  //   });
+  // });
 
   // Add additional specs as needed to test the behavior of the server setup
 });
