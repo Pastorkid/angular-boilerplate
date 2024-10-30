@@ -67,6 +67,7 @@ test('Click appVersion', async t => {
 
     const savePath = `${t.browser.alias.replace(/[^a-z0-9]/gi, '_')}/${screenshotMode}.png`;
     const screenshotDir = `Click_appVersion/${savePath}`;
+    // Time to strip everything but the element screenshot!
     await t.takeElementScreenshot('app-app-version',screenshotDir);
 });
 test('Click environment', async t => {
