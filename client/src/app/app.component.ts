@@ -6,6 +6,13 @@ import { CookieService } from 'ngx-cookie-service';
 import { UpdateService } from './services/update.service';
 import { AutoUnsubscribe } from "src/app/helpers/unsub";
 
+import { TranslocoDirective } from '@jsverse/transloco';
+
+import { AppVersionComponent } from './components/app-version/app-version.component';
+import { EnvironmentComponent } from './components/environment/environment.component';
+import { IndexedDBComponent } from './components/indexed-db/indexed-db.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { ApiComponent } from './components/api/api.component';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +21,18 @@ import { AutoUnsubscribe } from "src/app/helpers/unsub";
   standalone: true,
   imports: [
     NgComponentOutlet,
+    TranslocoDirective,
+    FooterComponent,
   ],
   styles: ``
 })
 @AutoUnsubscribe()
 export class AppComponent implements OnDestroy {
   public componentList: any[] = [
+    { name: 'App Version', component: AppVersionComponent },
+    { name: 'Environment', component: EnvironmentComponent },
+    { name: 'API', component: ApiComponent },
+    { name: 'IndexedDB', component: IndexedDBComponent }
   ];
   public activeComponent: number | null = null;
 
