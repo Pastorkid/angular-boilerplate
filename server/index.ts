@@ -3,7 +3,6 @@ import express, { Request, Response } from 'express';
 import pino from 'express-pino-logger';
 import config from './config/environment';
 import rateLimit from 'express-rate-limit';
-import apiRouter from './routes/api';
 
 declare global {
   var cache: { // NOSONAR
@@ -42,8 +41,6 @@ export function setupApp(): express.Application {
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   });
 
-  app.use('/api', apiLimiter);
-  app.use('/api', apiRouter);
 
   setupStaticFileServing(app, process.env.NODE_ENV || 'development');
 

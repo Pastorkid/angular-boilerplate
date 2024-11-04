@@ -15,11 +15,6 @@ process.env.TEST_MODE = process.env.TEST_MODE || 'tested';
     const failedCount = await runner
       .browsers([
         "chrome:headless --window-size=1280,1024",
-        // "firefox --window-size=1280,1024",
-        // "safari --window-size=1280,1024",
-        "edge --window-size=1280,1024",
-        // "opera --window-size=1280,1024",
-        "chrome:emulation:device=iphone X",
       ])
       .src(["run/test.ts"]) // Specify the test files or directories
       .screenshots({

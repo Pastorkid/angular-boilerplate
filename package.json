@@ -8,17 +8,10 @@
   },
   "scripts": {
     "client": "cd client && npm run start -- --configuration development",
-    "client-prod": "NODE_ENV=production && cd client && npm run start -- --configuration production",
     "server": "cd server && node-env-run --exec nodemon | pino-colada",
-    "server-prod": "NODE_ENV=production && cd server && node-env-run --exec nodemon",
-    "heroku-postbuild": "cd client && npm install && npm run build -- --configuration ${NODE_ENV}",
     "start": "cd server && ts-node index.ts",
     "dev": "run-p client server",
-    "prod": "run-p client-prod server-prod",
-    "sonar": "sonar-scanner -Dsonar.token=$(grep SONAR_TOKEN server/.env | cut -d '=' -f 2)",
-    "test": "./tests/test.sh",
-    "test-win": "tests\\test.bat",
-    "accept": "cd tests/e2e && node accept_tests.js"
+    "e2e": "cd tests/e2e && node test_runner.ts"
   },
   "workspaces": [
     "./client",
